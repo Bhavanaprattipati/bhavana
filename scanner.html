@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Keep - Barcode Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Fresh Keep - Scan Barcode</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="grocery.html">Grocery List</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="scanner.html">Scan Barcode</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="scanner">
+        <h2>Scan a Product Barcode</h2>
+        <p>Use your camera to scan a barcode and add items to your inventory.</p>
+        <video id="camera" autoplay></video>
+        <button id="scan-btn">Start Scanning</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fresh Keep. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('scan-btn').addEventListener('click', function() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                document.getElementById('camera').srcObject = stream;
+            })
+            .catch(err => console.error('Camera access denied:', err));
+        });
+    </script>
+
+</body>
+</html>
